@@ -14,7 +14,7 @@ Stack::Stack(uint32_t size) : _top(0), _size(size), _stack(new T[size]) {}
 
 
 Stack::Stack(const Stack &inStack) : _top(inStack._top), _size(inStack._size), _stack(new T[inStack._size]) {
-    for (size_t i = 0; i < inStack._size - 1; i++) {
+    for (uint32_t i = 0; i < inStack._size - 1; i++) {
         _stack[i] = inStack._stack[i];
     }
 }
@@ -29,7 +29,7 @@ Stack & Stack::operator=(const Stack &inStack) {
     if (this != &inStack) {
         T *temp_stack = new T[inStack._size];
         delete [] _stack;
-        for (size_t i = 0; i < inStack._size - 1; i++) {
+        for (uint32_t i = 0; i < inStack._size - 1; i++) {
             temp_stack[i] = inStack._stack[i];
         }
         _stack = temp_stack;

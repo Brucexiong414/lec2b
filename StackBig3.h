@@ -12,6 +12,7 @@
 
 // This header defines "size_t"
 #include <stdlib.h>
+#include <stdint.h>
 
 
 // Type of Stack element
