@@ -10,7 +10,7 @@
 #ifndef STACKBIG3_H
 #define STACKBIG3_H
 
-// This header defines "size_t"
+// This header defines "uint32_t"
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -20,7 +20,7 @@ typedef int T;
 
 class Stack {
 public:
-    /* Constrctors */
+    /* Constructors */
     Stack(uint32_t size);
     Stack(const Stack &inStack);
     /* Destructor */
