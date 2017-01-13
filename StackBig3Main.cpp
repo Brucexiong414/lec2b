@@ -50,6 +50,10 @@ int main (void) {
         stack4.top(top_item);
         std::cout << "the top item on stack4 is: " << top_item << std::endl;
     }
+
+    // Will this cause a problem?
+    stack4 = stack3;
+
     //Termination and destruction is handled automatically.
     return 0;
 }

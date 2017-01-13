@@ -3,7 +3,7 @@
  * Class: CS3251
  *
  * @author Julie A. Adams, G. Hemingway
- * Description: This file impliments an abstract data type stack class using
+ * Description: This file implements an abstract data type stack class using
  *              data hiding. This file does not use exception handling.
  */
 
@@ -20,7 +20,7 @@ typedef int T;
 class Stack {
 public:
     /* Constrctors */
-    Stack(size_t size);
+    Stack(uint32_t size);
     Stack(const Stack &inStack);
     /* Destructor */
     ~Stack(void);
@@ -34,9 +34,8 @@ public:
     bool isFull(void) const;
 
 private:
-    size_t _top, _size;
+    uint32_t _top, _size;
     T *_stack;
 };
 
 #endif
-
