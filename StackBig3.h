@@ -11,32 +11,31 @@
 #define STACKBIG3_H
 
 // This header defines "uint32_t"
-#include <stdlib.h>
-#include <stdint.h>
-
+#include <cstdint>
+#include <cstdlib>
 
 // Type of Stack element
 typedef int T;
 
 class Stack {
 public:
-    /* Constructors */
-    Stack(uint32_t size);
-    Stack(const Stack &inStack);
-    /* Destructor */
-    ~Stack(void);
+  /* Constructors */
+  Stack(uint32_t size);
+  Stack(const Stack &inStack);
+  /* Destructor */
+  ~Stack(void);
 
-    Stack & operator=(const Stack &);
+  Stack &operator=(const Stack &);
 
-    void push(const T &item);
-    void pop(T &item);
-    int top(T &cur_top);
-    bool isEmpty(void) const;
-    bool isFull(void) const;
+  void push(const T &item);
+  void pop(T &item);
+  int top(T &cur_top);
+  bool isEmpty(void) const;
+  bool isFull(void) const;
 
 private:
-    uint32_t _top, _size;
-    T *_stack;
+  uint32_t stackTop, size;
+  T *stack;
 };
 
 #endif

@@ -9,59 +9,43 @@
 
 #include "StackBig3.h"
 
+Stack::Stack(uint32_t size) : stackTop(0), size(size), stack(new T[size]) {}
 
-Stack::Stack(uint32_t size) : _top(0), _size(size), _stack(new T[size]) {}
+Stack::Stack(const Stack &inStack)
+    : stackTop(inStack.stackTop), size(inStack.size), stack(new T[inStack.size]) {
+  for (uint32_t i = 0; i < inStack.size - 1; i++) {
+    stack[i] = inStack.stack[i];
+  }
+}
 
+Stack::~Stack(void) { delete[] stack; }
 
-Stack::Stack(const Stack &inStack) : _top(inStack._top), _size(inStack._size), _stack(new T[inStack._size]) {
-    for (uint32_t i = 0; i < inStack._size - 1; i++) {
-        _stack[i] = inStack._stack[i];
+Stack &Stack::operator=(const Stack &inStack) {
+  if (this != &inStack) {
+    T *temp_stack = new T[inStack.size];
+    delete[] stack;
+    for (uint32_t i = 0; i < inStack.size - 1; i++) {
+      temp_stack[i] = inStack.stack[i];
     }
+    stack = temp_stack;
+    stackTop = inStack.stackTop;
+    size = inStack.size;
+  }
+  return *this;
 }
-
-
-Stack::~Stack(void) {
-    delete [] _stack;
-}
-
-
-Stack & Stack::operator=(const Stack &inStack) {
-    if (this != &inStack) {
-        T *temp_stack = new T[inStack._size];
-        delete [] _stack;
-        for (uint32_t i = 0; i < inStack._size - 1; i++) {
-            temp_stack[i] = inStack._stack[i];
-        }
-        _stack = temp_stack;
-        _top = inStack._top;
-        _size = inStack._size;
-    }
-    return *this;
-}
-
 
 void Stack::push(const T &item) {
-    _stack[_top] = item;
-    _top++;
+  stack[stackTop] = item;
+  stackTop++;
 }
 
-
-void Stack::pop(T &item) {
-    item = _stack[--_top];
-}
-
+void Stack::pop(T &item) { item = stack[--stackTop]; }
 
 int Stack::top(T &item) {
-    item = _stack[_top - 1];
-    return item;
+  item = stack[stackTop - 1];
+  return item;
 }
 
+bool Stack::isEmpty(void) const { return stackTop == 0; }
 
-bool Stack::isEmpty(void) const {
-    return _top == 0;
-}
-
-
-bool Stack::isFull(void) const {
-    return _top == _size;
-}
+bool Stack::isFull(void) const { return stackTop == size; }
